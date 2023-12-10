@@ -22,8 +22,6 @@ shuffle(solution)
 solution.pop()
 solution.pop()
 
-//let solution = ['green', 'green', 'blue', 'orange']
-
 console.log('solution :', solution);
 console.log('colors :', colors);
 

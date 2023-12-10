@@ -94,33 +94,47 @@ body {
 }
 
 .modale {
-  width: 35%;
+  width: 600px;
   height: 60%;
 }
 .modale #modale-content {
   display: flex;
   flex-direction: column;
 }
-.modale #modale-content #modal-header {
+.modale #modale-content #modale-header {
   display: flex;
   justify-content: center;
   border: 1px solid black;
   padding: 10px;
   margin-bottom: 40px;
 }
-.modale #modale-content #modal-header #close {
+.modale #modale-content #modale-header #close {
   position: absolute;
   right: 30px;
 }
-.modale #modale-content #modal-body {
+.modale #modale-content #modale-body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.modale #modale-content #modal-body .item-cards {
+.modale #modale-content #modale-body .item-cards {
   border: 1px solid black;
   width: 45%;
   height: 300px;
   margin: 10px;
   border-radius: 15px;
+}
+.modale #modale-content #modale-body .dialogueContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  width: 95%;
+  height: 25px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.modale #modale-content #modale-body .dialogueContainer span {
+  font-weight: bold;
 }

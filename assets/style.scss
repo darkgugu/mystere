@@ -101,7 +101,7 @@ body{
 }
 
 .modale{
-    width: 35%;
+    width: 600px;
     height: 60%;
 
     #modale-content{
@@ -110,7 +110,7 @@ body{
         display: flex;
         flex-direction: column;
     
-        #modal-header{
+        #modale-header{
     
             display: flex;
             justify-content: center;
@@ -124,7 +124,7 @@ body{
             }
         }
     
-        #modal-body{
+        #modale-body{
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -135,6 +135,22 @@ body{
                 height: 300px;
                 margin: 10px;
                 border-radius: 15px;
+            }
+
+            .dialogueContainer{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                border: 1px solid black;
+                width: 95%;
+                height: 25px;
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 20px;
+
+                span{
+                    font-weight: bold;
+                }
             }
         }
     }

@@ -1,0 +1,23 @@
+{
+    "personnages": [
+        {
+            "id": 0,
+            "prenom" : "Test",
+            "nom" : "McTesty",
+            "infos" : "Personnage de test",
+            "dialogues" : [
+                {
+                    "id" : 0,
+                    "conditions" : "à définir",
+                    "line" : "Bonjour, je suis le personnage de test"
+                },
+                {
+                    "id" : 1,
+                    "conditions" : "à définir",
+                    "line" : "Lorem ipsum sit dolor amet"
+                }
+            ],
+            "image" : "url"
+        }
+    ]
+}

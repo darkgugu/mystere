@@ -87,6 +87,20 @@ body{
     justify-content: space-between;
     align-items: center;
     height: 70%;
+
+    .persos-apercu{
+        //border: 1px solid black;
+        width: 20%;
+
+        img{
+            width: 100%;
+        }
+
+        div{
+            text-align: center;
+            padding: 5px;
+        }
+    }
 }
 
 #controls{

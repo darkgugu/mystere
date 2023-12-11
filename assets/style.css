@@ -82,6 +82,16 @@ body {
   align-items: center;
   height: 70%;
 }
+#persos .persos-apercu {
+  width: 20%;
+}
+#persos .persos-apercu img {
+  width: 100%;
+}
+#persos .persos-apercu div {
+  text-align: center;
+  padding: 5px;
+}
 
 #controls {
   display: flex;

@@ -26,7 +26,8 @@ for (let i = 0; i < nbPersos; i++) {
     persoContainer.setAttribute('id', 'persos-' + i)
     persoContainer.classList.add('persos-apercu')
     const persoImage = document.createElement('img')
-    persoImage.setAttribute('src', `../assets/images/${data.personnages[piece.personnages[i]].image}`)
+    persoImage.setAttribute('src', `./assets/images/${data.personnages[piece.personnages[i]].image}`)
+    console.log('url', data.personnages[piece.personnages[i]].image);
     const persoName = document.createElement('div')
     persoName.innerText = `${data.personnages[piece.personnages[i]].prenom} ${data.personnages[piece.personnages[i]].nom}`
     persoContainer.appendChild(persoImage)

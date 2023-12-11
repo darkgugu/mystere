@@ -17,7 +17,61 @@
                     "line" : "Lorem ipsum sit dolor amet"
                 }
             ],
-            "image" : "url"
+            "image" : "testChar1.png"
+        },
+        {
+            "id": 1,
+            "prenom" : "Françoise",
+            "nom" : "LaFrançaise",
+            "infos" : "Personnage de test n°2",
+            "dialogues" : [
+                {
+                    "id" : 0,
+                    "conditions" : "à définir",
+                    "line" : "Bonjour, je suis le personnage de test"
+                },
+                {
+                    "id" : 1,
+                    "conditions" : "à définir",
+                    "line" : "Lorem ipsum sit dolor amet"
+                }
+            ],
+            "image" : "testChar2.png"
+        },
+        {
+            "id": 2,
+            "prenom" : "Essai",
+            "nom" : "McEssai",
+            "infos" : "Personnage de test n°3",
+            "dialogues" : [
+                {
+                    "id" : 0,
+                    "conditions" : "à définir",
+                    "line" : "Bonjour, je suis le personnage de test"
+                },
+                {
+                    "id" : 1,
+                    "conditions" : "à définir",
+                    "line" : "Lorem ipsum sit dolor amet"
+                }
+            ],
+            "image" : "testChar3.png"
+        }
+    ],
+    "pieces" : [
+        {
+            "id" : 0,
+            "nom" : "Salon de test",
+            "personnages" : [
+                0, 1, 2
+            ]
+        },
+        {
+            "id" : 1,
+            "nom" : "Cuisine de test",
+            "personnages" : [
+                0, 1
+            ]
         }
     ]
 }

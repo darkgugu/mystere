@@ -1,7 +1,10 @@
 import data from '../datas/charachter.json' assert { type: 'json' };
 console.log(data)
 
-const nbPersos = 4
+
+const currPiece = 0
+let piece = data.pieces[currPiece]
+const nbPersos = piece.personnages.length
 
 const divTitle = document.createElement('div')
 divTitle.setAttribute('id', 'title')
@@ -22,7 +25,12 @@ for (let i = 0; i < nbPersos; i++) {
     const persoContainer = document.createElement('div')
     persoContainer.setAttribute('id', 'persos-' + i)
     persoContainer.classList.add('persos-apercu')
-    persoContainer.innerText = persoContainer.id
+    const persoImage = document.createElement('img')
+    persoImage.setAttribute('src', `../assets/images/${data.personnages[piece.personnages[i]].image}`)
+    const persoName = document.createElement('div')
+    persoName.innerText = `${data.personnages[piece.personnages[i]].prenom} ${data.personnages[piece.personnages[i]].nom}`
+    persoContainer.appendChild(persoImage)
+    persoContainer.appendChild(persoName)
     divPersos.appendChild(persoContainer)
 }
 

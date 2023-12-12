@@ -134,7 +134,7 @@ body {
   margin: 10px;
   border-radius: 15px;
 }
-.modale #modale-content #modale-body .dialogueContainer {
+.modale #modale-content #modale-body .dialogue-historique-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -145,6 +145,42 @@ body {
   padding: 10px;
   margin-bottom: 20px;
 }
-.modale #modale-content #modale-body .dialogueContainer span {
+.modale #modale-content #modale-body .dialogue-historique-container span {
   font-weight: bold;
+}
+.modale #modale-content #modale-body #modale-perso {
+  width: 90%;
+}
+.modale #modale-content #modale-body #modale-perso #perso-recap {
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.modale #modale-content #modale-body #modale-perso #perso-recap img {
+  height: 220px;
+}
+.modale #modale-content #modale-body #modale-perso #perso-recap #pName {
+  border-bottom: 1px solid black;
+  padding-right: 15px;
+}
+.modale #modale-content #modale-body #modale-perso #dialogue-container {
+  text-align: center;
+}
+.modale #modale-content #modale-body #modale-perso #dialogue-container #dialogueLine {
+  border: 2px solid black;
+  padding: 6px;
+  font-size: large;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.modale #modale-content #modale-body #modale-perso #dialogue-container .reponse {
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 5px;
+}
+.modale #modale-content #modale-body #modale-perso #dialogue-container .reponse:hover {
+  background-color: antiquewhite;
+  cursor: pointer;
 }

@@ -151,7 +151,7 @@ body{
                 border-radius: 15px;
             }
 
-            .dialogueContainer{
+            .dialogue-historique-container{
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
@@ -166,6 +166,51 @@ body{
                     font-weight: bold;
                 }
             }
+
+            #modale-perso{
+
+                width: 90%;
+                #perso-recap{
+                    border: 2px solid black;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    img{
+                        height: 220px;
+                    }
+                    #pName{
+                        border-bottom: 1px solid black;
+                        padding-right: 15px;
+                    }
+                }
+    
+                #dialogue-container{
+                    text-align: center;
+
+                    #dialogueLine{
+                        border: 2px solid black;
+                        padding: 6px;
+                        font-size: large;
+                        font-style: italic;
+                        margin-bottom: 10px;
+                    }
+
+                    .reponse{
+                        border-radius: 5px;
+                        border: 1px solid black;
+                        margin: 10px;
+                        padding: 5px;
+
+                        &:hover{
+                            background-color: antiquewhite;
+                            cursor: pointer;
+                        }
+
+                    }
+                }
+            }
+
+
         }
     }
 }

@@ -22,14 +22,16 @@ divTitle.appendChild(emptyDiv)
 const divPersos = document.createElement('div')
 divPersos.setAttribute('id', 'persos')
 for (let i = 0; i < nbPersos; i++) {
+    const currChar = data.personnages[piece.personnages[i]]
+
     const persoContainer = document.createElement('div')
     persoContainer.setAttribute('id', 'persos-' + i)
     persoContainer.classList.add('persos-apercu')
+    persoContainer.addEventListener('click', () => openModale('Personnages', currChar))
     const persoImage = document.createElement('img')
-    persoImage.setAttribute('src', `./assets/images/${data.personnages[piece.personnages[i]].image}`)
-    console.log('url', data.personnages[piece.personnages[i]].image);
+    persoImage.setAttribute('src', `./assets/images/${currChar.image}`)
     const persoName = document.createElement('div')
-    persoName.innerText = `${data.personnages[piece.personnages[i]].prenom} ${data.personnages[piece.personnages[i]].nom}`
+    persoName.innerText = `${currChar.prenom} ${currChar.nom}`
     persoContainer.appendChild(persoImage)
     persoContainer.appendChild(persoName)
     divPersos.appendChild(persoContainer)
@@ -63,7 +65,7 @@ buttonClose.addEventListener('click', () => {
 })
 
 
-function openModale(type) {
+function openModale(type, data) {
     console.log(type)
     const modale = document.getElementById('modale')
     const modaleTitle = document.getElementById('modale-title')
@@ -82,6 +84,10 @@ function openModale(type) {
 
         case 'Dialogues':
             modaleDialogues(modaleBody)
+        break;
+
+        case 'Personnages':
+            modalePerso(modaleBody, data)
         break;
 
         default:
@@ -110,7 +116,7 @@ function modaleDialogues(modaleBody) {
 
     for (let i = 0; i < nbDialogues; i++) {
         const dialogue = document.createElement('div')
-        dialogue.classList.add('dialogueContainer')
+        dialogue.classList.add('dialogue-historique-container')
         const span = document.createElement('span')
         span.innerText = `${charName} : `
         dialogue.appendChild(span)
@@ -119,7 +125,46 @@ function modaleDialogues(modaleBody) {
     }
 }
 
-function modalePerso(modaleBody) {
+function modalePerso(modaleBody, perso) {
 
+    console.log(perso)
+    const nbReponse = 5
+
+    const modalePersoContainer = document.createElement('div')
+    modalePersoContainer.setAttribute('id', 'modale-perso')
+
+    const persoRecap = document.createElement('div')
+    persoRecap.setAttribute('id', 'perso-recap')
+    const imageRecap = document.createElement('img')
+    imageRecap.setAttribute('src', `./assets/images/${perso.image}`)
+    const textRecap = document.createElement('div')
+    const pName = document.createElement('p')
+    const pInfos = document.createElement('p')
+    pName.innerText = `${perso.prenom} ${perso.nom}`
+    pName.setAttribute('id', 'pName')
+    pInfos.innerText = perso.infos
+    textRecap.appendChild(pName)
+    textRecap.appendChild(pInfos)
+    persoRecap.appendChild(imageRecap)
+    persoRecap.appendChild(textRecap)
+
+    const dialogueContainer = document.createElement('div')
+    dialogueContainer.setAttribute('id', 'dialogue-container')
+    const dialogue = document.createElement('div')
+    dialogue.setAttribute('id', 'dialogueLine')
+    dialogue.innerText = `"${perso.dialogues[0].line}"`
+    const reponseContainer = document.createElement('div')
+    for (let i = 0; i < nbReponse; i++) {
+        const reponse = document.createElement('div')
+        reponse.classList.add('reponse')
+        reponse.innerText = 'Ceci est une réponse du joueur'
+        reponseContainer.appendChild(reponse)
+    }
+    dialogueContainer.appendChild(dialogue)
+    dialogueContainer.appendChild(reponseContainer)
     
+    modalePersoContainer.appendChild(persoRecap)
+    modalePersoContainer.appendChild(dialogueContainer)
+
+    modaleBody.appendChild(modalePersoContainer)
 }

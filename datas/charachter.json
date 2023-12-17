@@ -4,17 +4,11 @@
             "id": 0,
             "prenom" : "Test",
             "nom" : "McTesty",
-            "infos" : "Personnage de test",
-            "dialogues" : [
+            "infos" : "Témoin",
+            "pieces" : [
                 {
-                    "id" : 0,
-                    "conditions" : "à définir",
-                    "line" : "Bonjour, je suis le personnage de test et ceci est un dialogue"
-                },
-                {
-                    "id" : 1,
-                    "conditions" : "à définir",
-                    "line" : "Lorem ipsum sit dolor amet"
+                    "pieceId": 0,
+                    "baseDialogue": 4
                 }
             ],
             "image" : "testChar1.png"
@@ -23,36 +17,24 @@
             "id": 1,
             "prenom" : "Françoise",
             "nom" : "LaFrançaise",
-            "infos" : "Personnage de test n°2",
-            "dialogues" : [
+            "infos" : "Tueuse",
+            "pieces" : [
                 {
-                    "id" : 0,
-                    "conditions" : "à définir",
-                    "line" : "Bonjour, je suis le personnage de test"
-                },
-                {
-                    "id" : 1,
-                    "conditions" : "à définir",
-                    "line" : "Lorem ipsum sit dolor amet"
+                    "pieceId": 0,
+                    "baseDialogue": 0
                 }
             ],
             "image" : "testChar2.png"
         },
         {
             "id": 2,
-            "prenom" : "Essai",
-            "nom" : "McEssai",
-            "infos" : "Personnage de test n°3",
-            "dialogues" : [
+            "prenom" : "Inspecteur",
+            "nom" : "Minator",
+            "infos" : "Inspecteur",
+            "pieces" : [
                 {
-                    "id" : 0,
-                    "conditions" : "à définir",
-                    "line" : "Bonjour, je suis le personnage de test"
-                },
-                {
-                    "id" : 1,
-                    "conditions" : "à définir",
-                    "line" : "Lorem ipsum sit dolor amet"
+                    "pieceId": 0,
+                    "baseDialogue": 8
                 }
             ],
             "image" : "testChar3.png"

@@ -1,0 +1,286 @@
+{
+    "dialogues": [
+        {
+            "id" : 0,
+            "line": "Wallah c'est pas moi la tueuse",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "D'accord",
+                    "dialogueNext": null,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "T'es sûr mon reuf ?",
+                    "dialogueNext": 1,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 1,
+            "line": "Oeoe c'est pas oim",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Ok",
+                    "dialogueNext": null,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "C'est pas ce que prétends Jay Hovah pourtant",
+                    "dialogueNext": 2,
+                    "conditions": [
+                        {
+                            "reachedDialogue" : [4]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id" : 2,
+            "line": "Il ment ! Il n'a aucune preuve contre moi !",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Si tu refuses d'avouer je reviendrais avec des preuves !",
+                    "dialogueNext": null,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "Ah oe ? Et ça qu'est ce que c'est alors batard ???",
+                    "dialogueNext": 3,
+                    "conditions": [
+                        {
+                            "ownedItems": [0]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id" : 3,
+            "line": "Bon d'accords je l'avoue, telle une fenêtre de chateau je suis une meurtrière",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Je vais te traduire devant la justice tah Duolingo",
+                    "dialogueNext": null,
+                    "ender": true,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 4,
+            "line": "Eh pssst eh je sais qui c'est qui l'a tué, c'est Françoise !",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Alors déjà c'est pas bien de pointer du doigt",
+                    "dialogueNext": 5,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "Oh mon dieu mais je doit de ce pas aller la dénoncer auprès de l'inspecteur Minator",
+                    "dialogueNext": 6,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "Dis donc dis donc, as-tu des preuves de ce que tu avances",
+                    "dialogueNext": 7,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 5,
+            "line": "Désolé *range son gros doigt*",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Oh mon dieu mais je doit de ce pas aller la dénoncer auprès de l'inspecteur Minator",
+                    "dialogueNext": 6,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "Dis donc dis donc, as-tu des preuves de ce que tu avances",
+                    "dialogueNext": 7,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 6,
+            "line": "Bah oe fréro dépêche",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "J'y vais de ce pas",
+                    "dialogueNext": null,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 7,
+            "line": "Des preuves ? Ah oui, j'ai trouvé ça dans la poubelle",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Oh mon dieu mais je doit de ce pas aller la dénoncer auprès de l'inspecteur Minator",
+                    "dialogueNext": 6,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 8,
+            "line": "Bonjour ! Est ce que vous avez trouvé le coupable ?",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Non",
+                    "dialogueNext": null,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "Oui !",
+                    "dialogueNext": 9,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 9,
+            "line": "Mais ptdr c ki ??",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Machin 'Je sais plus comment il s'apelle' Trucbidule",
+                    "dialogueNext": 10,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "C'est Françoise LaFrançaise ! J'accuse !",
+                    "dialogueNext": 10,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 10,
+            "line": "Avez vous des preuves suffisantes Detective Egée ?",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Oui ! *Présenter l'item [0]*",
+                    "dialogueNext": 11,
+                    "conditions": [
+                        {
+                            "ownedItems": [0]
+                        }
+                    ]
+                },
+                {
+                    "reponseText" : "Oui ! *Présenter l'item [1]*",
+                    "dialogueNext": 12,
+                    "conditions": [
+                        {
+                            "ownedItems": [1]
+                        }
+                    ]
+                },
+                {
+                    "reponseText" : "Oui ! *Présenter l'item [2]*",
+                    "dialogueNext": 13,
+                    "conditions": [
+                        {
+                            "ownedItems": [2]
+                        }
+                    ]
+                },
+                {
+                    "reponseText" : "Ah des preuves ? Faut ça ??",
+                    "dialogueNext": null,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 11,
+            "line": "Bravo, quelle preuve solide, vous devriez pouvoir des aveux avec ça !",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Merci Chef Saint-Michef",
+                    "dialogueNext": null,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "J'ai déjà les aveux !!!!!",
+                    "dialogueNext": 15,
+                    "conditions": [
+                        {
+                            "reachedDialogue": [3]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id" : 12,
+            "line": "Euh c'est moyen comme preuve ça",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Ah bon bah je continue à chercher du coup",
+                    "dialogueNext": null,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "Faites moi confiance !",
+                    "dialogueNext": 14,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 13,
+            "line": "MAIS C'EST PAS UNE PREUVE FAITES UN EFFORT 2nd Class ActionLawsuit",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Désolé Capitaine Bihai !!!!!!!!!!!",
+                    "dialogueNext": null,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 14,
+            "line": "Bon d'accord mais seulement cette fois Sergent Trification, obtenez moi des aveux et on en reparleras",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Je saurais vous faire honneur Colonel Davion !",
+                    "dialogueNext": null,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 15,
+            "line": "Bravo, on envoie les gars le coffrer !",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "FIN DE LA DEMO",
+                    "dialogueNext": null,
+                    "conditions": null
+                }
+            ]
+        }
+    ]
+}

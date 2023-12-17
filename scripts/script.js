@@ -1,10 +1,15 @@
 import data from '../datas/charachter.json' assert { type: 'json' };
+import dialoguesJSON from '../datas/test.json' assert { type: 'json' };
 console.log(data)
+console.log(dialoguesJSON)
 
 
 const currPiece = 0
 let piece = data.pieces[currPiece]
 const nbPersos = piece.personnages.length
+
+const itemOwned = []
+const reachedDialogue = []
 
 const divTitle = document.createElement('div')
 divTitle.setAttribute('id', 'title')
@@ -59,35 +64,38 @@ function setControlButtons(buttonName, destination) {
 }
 
 const buttonClose = document.getElementById('close')
-buttonClose.addEventListener('click', () => {
-    console.log("test")
+buttonClose.addEventListener('click', () => {closeModale()})
+
+function closeModale() {
     modale.close()
-})
+}
+
+const modale = document.getElementById('modale')
+const modaleTitle = document.getElementById('modale-title')
+const modaleBody = document.getElementById('modale-body')
 
 
 function openModale(type, data) {
-    console.log(type)
-    const modale = document.getElementById('modale')
-    const modaleTitle = document.getElementById('modale-title')
+
     modaleTitle.innerText = type
-    const modaleBody = document.getElementById('modale-body')
     modaleBody.innerText = ''
 
     switch (type) {
         case 'Items':
-            modaleItem(modaleBody)
+            modaleItem()
         break;
 
         case 'Enigme':
-            modaleEnigme(modaleBody)
+            modaleEnigme()
         break;
 
         case 'Dialogues':
-            modaleDialogues(modaleBody)
+            modaleDialogues()
         break;
 
         case 'Personnages':
-            modalePerso(modaleBody, data)
+            const currChar = data
+            modalePerso(currChar, currChar.pieces[currPiece].baseDialogue)
         break;
 
         default:
@@ -96,7 +104,7 @@ function openModale(type, data) {
     modale.showModal()
 }
 
-function modaleItem(modaleBody) {
+function modaleItem() {
     const nbItems = 8
     for (let i = 0; i < nbItems; i++) {
         const card = document.createElement('div')
@@ -105,11 +113,11 @@ function modaleItem(modaleBody) {
     }
 }
 
-function modaleEnigme(modaleBody) {
+function modaleEnigme() {
     
 }
 
-function modaleDialogues(modaleBody) {
+function modaleDialogues() {
     const charName = 'M. Machin'
     const text = 'Lorem ipsum sit dolor amet'
     const nbDialogues = 15
@@ -125,10 +133,7 @@ function modaleDialogues(modaleBody) {
     }
 }
 
-function modalePerso(modaleBody, perso) {
-
-    console.log(perso)
-    const nbReponse = 5
+function modalePerso(perso, dialogue) {
 
     const modalePersoContainer = document.createElement('div')
     modalePersoContainer.setAttribute('id', 'modale-perso')
@@ -150,21 +155,51 @@ function modalePerso(modaleBody, perso) {
 
     const dialogueContainer = document.createElement('div')
     dialogueContainer.setAttribute('id', 'dialogue-container')
-    const dialogue = document.createElement('div')
-    dialogue.setAttribute('id', 'dialogueLine')
-    dialogue.innerText = `"${perso.dialogues[0].line}"`
+    const dialogueDiv = document.createElement('div')
+    dialogueDiv.setAttribute('id', 'dialogueLine')
+    dialogueDiv.innerText = `"${dialoguesJSON.dialogues[dialogue].line}"`
+    reachedDialogue.includes(dialogue) ? null : reachedDialogue.push(dialogue)
+    
     const reponseContainer = document.createElement('div')
-    for (let i = 0; i < nbReponse; i++) {
-        const reponse = document.createElement('div')
-        reponse.classList.add('reponse')
-        reponse.innerText = 'Ceci est une réponse du joueur'
-        reponseContainer.appendChild(reponse)
+    const reponsesArray = dialoguesJSON.dialogues[dialogue].reponses
+    for (let i = 0; i < reponsesArray.length; i++) {
+
+        if (isConditionOk(reponsesArray[i].conditions)) {
+            const reponse = document.createElement('div')
+            reponse.classList.add('reponse')
+            reponse.innerText = reponsesArray[i].reponseText
+            reponse.addEventListener('click', () => {changeDialog(perso, reponsesArray[i].dialogueNext)})
+            reponseContainer.appendChild(reponse)            
+        }
+
+
+
+
     }
-    dialogueContainer.appendChild(dialogue)
+    dialogueContainer.appendChild(dialogueDiv)
     dialogueContainer.appendChild(reponseContainer)
     
     modalePersoContainer.appendChild(persoRecap)
     modalePersoContainer.appendChild(dialogueContainer)
 
     modaleBody.appendChild(modalePersoContainer)
+}
+
+function changeDialog(currChar, nextDialogue) {
+    if (nextDialogue === null) {
+        closeModale()
+    }
+    else{
+        modaleBody.innerText = ''
+        modalePerso(currChar, nextDialogue)
+    }
+}
+
+function isConditionOk(conditions) {
+    
+    if (conditions === null) {
+        return true
+    } else if (conditions.reachedDialogue != null){
+        console.log(conditions)
+    }
 }

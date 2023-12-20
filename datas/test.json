@@ -30,11 +30,9 @@
                 {
                     "reponseText" : "C'est pas ce que prétends Jay Hovah pourtant",
                     "dialogueNext": 2,
-                    "conditions": [
-                        {
-                            "reachedDialogue" : [4]
-                        }
-                    ]
+                    "conditions": {
+                        "reachedDialogue" : [4]
+                    }       
                 }
             ]
         },
@@ -51,11 +49,9 @@
                 {
                     "reponseText" : "Ah oe ? Et ça qu'est ce que c'est alors batard ???",
                     "dialogueNext": 3,
-                    "conditions": [
-                        {
-                            "ownedItems": [0]
-                        }
-                    ]
+                    "conditions": {
+                        "ownedItems": [0]
+                    }               
                 }
             ]
         },
@@ -177,29 +173,23 @@
                 {
                     "reponseText" : "Oui ! *Présenter l'item [0]*",
                     "dialogueNext": 11,
-                    "conditions": [
-                        {
-                            "ownedItems": [0]
-                        }
-                    ]
+                    "conditions": {
+                        "ownedItems": [0]
+                    }                   
                 },
                 {
                     "reponseText" : "Oui ! *Présenter l'item [1]*",
                     "dialogueNext": 12,
-                    "conditions": [
-                        {
-                            "ownedItems": [1]
-                        }
-                    ]
+                    "conditions": {
+                        "ownedItems": [1]
+                    }                    
                 },
                 {
                     "reponseText" : "Oui ! *Présenter l'item [2]*",
                     "dialogueNext": 13,
-                    "conditions": [
-                        {
-                            "ownedItems": [2]
-                        }
-                    ]
+                    "conditions": {
+                        "ownedItems": [2]
+                    }                    
                 },
                 {
                     "reponseText" : "Ah des preuves ? Faut ça ??",
@@ -221,11 +211,10 @@
                 {
                     "reponseText" : "J'ai déjà les aveux !!!!!",
                     "dialogueNext": 15,
-                    "conditions": [
-                        {
-                            "reachedDialogue": [3]
-                        }
-                    ]
+                    "conditions": {
+                        
+                        "reachedDialogue": [3]
+                    }
                 }
             ]
         },

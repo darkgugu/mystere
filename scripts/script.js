@@ -8,7 +8,7 @@ const currPiece = 0
 let piece = data.pieces[currPiece]
 const nbPersos = piece.personnages.length
 
-const itemOwned = []
+const ownedItems = [0]
 const reachedDialogue = []
 
 const divTitle = document.createElement('div')
@@ -171,10 +171,6 @@ function modalePerso(perso, dialogue) {
             reponse.addEventListener('click', () => {changeDialog(perso, reponsesArray[i].dialogueNext)})
             reponseContainer.appendChild(reponse)            
         }
-
-
-
-
     }
     dialogueContainer.appendChild(dialogueDiv)
     dialogueContainer.appendChild(reponseContainer)
@@ -195,11 +191,43 @@ function changeDialog(currChar, nextDialogue) {
     }
 }
 
-function isConditionOk(conditions) {
+function isConditionOk(conditions) {   
     
     if (conditions === null) {
         return true
-    } else if (conditions.reachedDialogue != null){
-        console.log(conditions)
+    } else if (conditions.reachedDialogue != null && conditions.ownedItems != null){
+        for (let i = 0; i < conditions.reachedDialogue.length; i++) {
+            if (!reachedDialogue.includes(conditions.reachedDialogue[i])) {
+                return false
+            }
+        }
+        for (let i = 0; i < conditions.ownedItems.length; i++) {
+            if (!ownedItems.includes(conditions.ownedItems[i])) {
+                return false
+            }
+        }
+        return true
+    }
+    else if (conditions.reachedDialogue != null){
+        for (let i = 0; i < conditions.reachedDialogue.length; i++) {
+            if (reachedDialogue.includes(conditions.reachedDialogue[i])) {
+                console.log('includes')
+            }else{
+                console.log('not includes')
+            }
+
+            if (!reachedDialogue.includes(conditions.reachedDialogue[i])) {
+                console.log(false)
+                return false
+            }
+        }
+        return true
+    } else if (conditions.ownedItems != null){
+        for (let i = 0; i < conditions.ownedItems.length; i++) {
+            if (!ownedItems.includes(conditions.ownedItems[i])) {
+                return false
+            }
+        }
+        return true
     }
 }

@@ -1,15 +1,19 @@
 import data from '../datas/charachter.json' assert { type: 'json' };
 import dialoguesJSON from '../datas/test.json' assert { type: 'json' };
+import {main as mastermindMain, isWon as mastermindWin} from './mastermind.js'
 console.log(data)
 console.log(dialoguesJSON)
-
 
 const currPiece = 0
 let piece = data.pieces[currPiece]
 const nbPersos = piece.personnages.length
 
-const ownedItems = [0]
+const ownedItems = []
 const reachedDialogue = []
+let enigmesWon = {
+    "mastermind" : false,
+    "enigme2" : false
+}
 
 const divTitle = document.createElement('div')
 divTitle.setAttribute('id', 'title')
@@ -68,6 +72,8 @@ buttonClose.addEventListener('click', () => {closeModale()})
 
 function closeModale() {
     modale.close()
+    mastermindWin ? enigmesWon.mastermind = true : null
+    console.log(enigmesWon)
 }
 
 const modale = document.getElementById('modale')
@@ -115,6 +121,10 @@ function modaleItem() {
 
 function modaleEnigme() {
     
+    const enigmeContainer = document.createElement('div')
+    enigmeContainer.setAttribute('id', 'mastermind')
+    modaleBody.appendChild(enigmeContainer)
+    mastermindMain()
 }
 
 function modaleDialogues() {
@@ -168,7 +178,7 @@ function modalePerso(perso, dialogue) {
             const reponse = document.createElement('div')
             reponse.classList.add('reponse')
             reponse.innerText = reponsesArray[i].reponseText
-            reponse.addEventListener('click', () => {changeDialog(perso, reponsesArray[i].dialogueNext)})
+            reponse.addEventListener('click', () => {handleReponse(perso, reponsesArray[i].dialogueNext, reponsesArray[i].effets)})
             reponseContainer.appendChild(reponse)            
         }
     }
@@ -181,7 +191,16 @@ function modalePerso(perso, dialogue) {
     modaleBody.appendChild(modalePersoContainer)
 }
 
-function changeDialog(currChar, nextDialogue) {
+function handleReponse(currChar, nextDialogue, effets) {
+
+    if (effets != null) {
+        console.log(effets.givenItems)
+        for (let i = 0; i < effets.givenItems.length; i++) {
+            getItem(effets.givenItems[i])
+        }
+        console.log('ownedItems :', ownedItems);
+    }
+
     if (nextDialogue === null) {
         closeModale()
     }
@@ -210,14 +229,7 @@ function isConditionOk(conditions) {
     }
     else if (conditions.reachedDialogue != null){
         for (let i = 0; i < conditions.reachedDialogue.length; i++) {
-            if (reachedDialogue.includes(conditions.reachedDialogue[i])) {
-                console.log('includes')
-            }else{
-                console.log('not includes')
-            }
-
             if (!reachedDialogue.includes(conditions.reachedDialogue[i])) {
-                console.log(false)
                 return false
             }
         }
@@ -230,4 +242,9 @@ function isConditionOk(conditions) {
         }
         return true
     }
+}
+
+function getItem(itemId){
+
+    ownedItems.push(itemId)
 }

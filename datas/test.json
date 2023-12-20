@@ -86,7 +86,10 @@
                 {
                     "reponseText" : "Dis donc dis donc, as-tu des preuves de ce que tu avances",
                     "dialogueNext": 7,
-                    "conditions": null
+                    "conditions": null,
+                    "effets" : {
+                        "givenItems" : [0, 1, 2, 5, 9]
+                    }
                 }
             ]
         },
@@ -103,7 +106,10 @@
                 {
                     "reponseText" : "Dis donc dis donc, as-tu des preuves de ce que tu avances",
                     "dialogueNext": 7,
-                    "conditions": null
+                    "conditions": null,
+                    "effets" : {
+                        "givenItems" : [0, 1, 2, 5, 9]
+                    }
                 }
             ]
         },

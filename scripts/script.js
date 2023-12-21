@@ -131,25 +131,24 @@ function modaleEnigme() {
 }
 
 function modaleHistorique() {
-    const charName = 'M. Machin'
-    const text = 'Lorem ipsum sit dolor amet'
-    const nbDialogues = 15
 
-    for (let i = 0; i < histo.length; i++) {
+    const reverseHisto = histo.toReversed()
+
+    for (let i = 0; i < reverseHisto.length; i++) {
         const dialogueContainer = document.createElement('div')
 
         const dialogue = document.createElement('p')
         const spanDial = document.createElement('span')
-        spanDial.innerText = `${histo[i].perso} : `
+        spanDial.innerText = `${reverseHisto[i].perso} : `
         dialogue.appendChild(spanDial)
-        dialogue.innerHTML += histo[i].dialogue
+        dialogue.innerHTML += reverseHisto[i].dialogue
 
         const reponse = document.createElement('p')
         const spanRep = document.createElement('span')
         spanRep.setAttribute('id', 'spanRep')
         spanRep.innerHTML = `&#10551Vous : `
         reponse.appendChild(spanRep)
-        reponse.innerHTML += histo[i].reponse
+        reponse.innerHTML += reverseHisto[i].reponse
 
         dialogueContainer.classList.add('dialogue-historique-container')
 

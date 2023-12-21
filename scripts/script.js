@@ -14,6 +14,9 @@ let enigmesWon = {
     "mastermind" : false,
     "enigme2" : false
 }
+let histo = [
+
+]
 
 const divTitle = document.createElement('div')
 divTitle.setAttribute('id', 'title')
@@ -51,7 +54,7 @@ divControls.setAttribute('id', 'controls')
 
 setControlButtons('Items', divControls)
 setControlButtons('Enigme', divControls)
-setControlButtons('Dialogues', divControls)
+setControlButtons('Historique de dialogues', divControls)
 
 const mainContainer = document.getElementById('background')
 mainContainer.appendChild(divTitle)
@@ -95,8 +98,8 @@ function openModale(type, data) {
             modaleEnigme()
         break;
 
-        case 'Dialogues':
-            modaleDialogues()
+        case 'Historique de dialogues':
+            modaleHistorique()
         break;
 
         case 'Personnages':
@@ -127,19 +130,32 @@ function modaleEnigme() {
     mastermindMain()
 }
 
-function modaleDialogues() {
+function modaleHistorique() {
     const charName = 'M. Machin'
     const text = 'Lorem ipsum sit dolor amet'
     const nbDialogues = 15
 
-    for (let i = 0; i < nbDialogues; i++) {
-        const dialogue = document.createElement('div')
-        dialogue.classList.add('dialogue-historique-container')
-        const span = document.createElement('span')
-        span.innerText = `${charName} : `
-        dialogue.appendChild(span)
-        dialogue.innerHTML += text
-        modaleBody.appendChild(dialogue)
+    for (let i = 0; i < histo.length; i++) {
+        const dialogueContainer = document.createElement('div')
+
+        const dialogue = document.createElement('p')
+        const spanDial = document.createElement('span')
+        spanDial.innerText = `${histo[i].perso} : `
+        dialogue.appendChild(spanDial)
+        dialogue.innerHTML += histo[i].dialogue
+
+        const reponse = document.createElement('p')
+        const spanRep = document.createElement('span')
+        spanRep.setAttribute('id', 'spanRep')
+        spanRep.innerHTML = `&#10551Vous : `
+        reponse.appendChild(spanRep)
+        reponse.innerHTML += histo[i].reponse
+
+        dialogueContainer.classList.add('dialogue-historique-container')
+
+        dialogueContainer.appendChild(dialogue)
+        dialogueContainer.appendChild(reponse)
+        modaleBody.appendChild(dialogueContainer)
     }
 }
 
@@ -178,7 +194,7 @@ function modalePerso(perso, dialogue) {
             const reponse = document.createElement('div')
             reponse.classList.add('reponse')
             reponse.innerText = reponsesArray[i].reponseText
-            reponse.addEventListener('click', () => {handleReponse(perso, reponsesArray[i].dialogueNext, reponsesArray[i].effets)})
+            reponse.addEventListener('click', () => {handleReponse(perso, reponsesArray[i].dialogueNext, reponsesArray[i].effets, reponsesArray[i].reponseText, dialoguesJSON.dialogues[dialogue].line)})
             reponseContainer.appendChild(reponse)            
         }
     }
@@ -191,7 +207,15 @@ function modalePerso(perso, dialogue) {
     modaleBody.appendChild(modalePersoContainer)
 }
 
-function handleReponse(currChar, nextDialogue, effets) {
+function handleReponse(currChar, nextDialogue, effets, text, currDialogue) {
+
+    const histoObj = {
+        "perso" : `${currChar.prenom} ${currChar.nom}`,
+        "dialogue" : currDialogue,
+        "reponse" : text
+    }
+
+    histo.push(histoObj)
 
     if (effets != null) {
         console.log(effets.givenItems)

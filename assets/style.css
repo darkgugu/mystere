@@ -136,17 +136,23 @@ body {
 }
 .modale #modale-content #modale-body .dialogue-historique-container {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  flex-direction: column;
   border: 1px solid black;
   width: 95%;
-  height: 25px;
+  height: 30px;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
 }
+.modale #modale-content #modale-body .dialogue-historique-container p {
+  margin: 0;
+}
 .modale #modale-content #modale-body .dialogue-historique-container span {
   font-weight: bold;
+  color: black;
+}
+.modale #modale-content #modale-body .dialogue-historique-container #spanRep {
+  color: green;
 }
 .modale #modale-content #modale-body #modale-perso {
   width: 90%;

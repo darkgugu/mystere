@@ -1,0 +1,28 @@
+{
+    "pieces" : [
+        {
+            "id" : 0,
+            "nom" : "Salon de test",
+            "personnages" : [
+                0, 1, 2
+            ],
+            "piecesNext" : [1, 2]
+        },
+        {
+            "id" : 1,
+            "nom" : "Cuisine de test",
+            "personnages" : [
+                0, 1
+            ],
+            "piecesNext" : [0]
+        },
+        {
+            "id" : 2,
+            "nom" : "Véranda de test",
+            "personnages" : [
+                2
+            ],
+            "piecesNext" : [0]
+        }
+    ]
+}

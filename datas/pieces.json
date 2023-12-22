@@ -2,7 +2,7 @@
     "pieces" : [
         {
             "id" : 0,
-            "nom" : "Salon de test",
+            "nom" : "Salon",
             "personnages" : [
                 0, 1, 2
             ],
@@ -10,7 +10,7 @@
         },
         {
             "id" : 1,
-            "nom" : "Cuisine de test",
+            "nom" : "Cuisine",
             "personnages" : [
                 0, 1
             ],
@@ -18,9 +18,9 @@
         },
         {
             "id" : 2,
-            "nom" : "Véranda de test",
+            "nom" : "Salle de jeux",
             "personnages" : [
-                2
+                3
             ],
             "piecesNext" : [0]
         }

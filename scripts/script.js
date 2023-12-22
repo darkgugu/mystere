@@ -3,10 +3,11 @@ import dialoguesJSON from '../datas/dialogues.json' assert { type: 'json' };
 import piecesJSON from '../datas/pieces.json' assert { type: 'json' };
 import itemsJSON from '../datas/items.json' assert { type : 'json'};
 import {main as mastermindMain, isWon as mastermindWin} from './mastermind.js'
+import {affichage as sticksMain, isWon as sticksWin} from './mastermind.js'
 //console.log(charachterJSON)
 //console.log(dialoguesJSON)
 
-const currPieceId = 0
+let currPieceId = 0
 let pieceStart = piecesJSON.pieces[currPieceId]
 
 const ownedItems = []
@@ -23,6 +24,7 @@ generatePiece(pieceStart)
 
 function generatePiece(piece) {
 
+    currPieceId = piece.id
 	const mainContainer = document.getElementById('background')
 	mainContainer.innerText = ''
 	closeModale()

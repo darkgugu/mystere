@@ -342,6 +342,61 @@
                     }
                 }
             ]
+        },        
+        {
+            "id" : 20,
+            "line": "Salut, jsert pas à grand chose, tu veux jouer au jeu des ptits bâtons ? Je t'offres des chips si tu gagnes.",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Oh ouai trop bien les ptits bâtons !",
+                    "dialogueNext": null,
+                    "conditions": null,
+                    "effets" : {
+                        "currentEnigme" : "stick"
+                    }
+                },
+                {
+                    "reponseText" : "Nan je t'aime po",
+                    "dialogueNext": null,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "J'ai gagné, elles sont ou mes chips ??",
+                    "dialogueNext": 21,
+                    "conditions": {
+                        "wonEnigmes" : ["stick"]
+                    }
+                }
+            ]
+        },
+        {
+            "id" : 21,
+            "line": "Tiens mon chou",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Merci !",
+                    "dialogueNext": null,
+                    "conditions": null,
+                    "effets" : {
+                        "givenItems" : [3]
+                    }
+                }
+            ]
+        },
+        {
+            "id" : 22,
+            "line": "Allons parler dans le salon plutôt, je ne me sens pas bien juste avec l'autre la",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "D'accord",
+                    "dialogueNext": null,
+                    "conditions": null
+                }
+            ]
         }
+
     ]
 }

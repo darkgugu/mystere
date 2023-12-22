@@ -9,6 +9,10 @@
                 {
                     "pieceId": 0,
                     "baseDialogue": 4
+                },
+                {
+                    "pieceId": 1,
+                    "baseDialogue": 22
                 }
             ],
             "image" : "testChar0.png"
@@ -22,6 +26,10 @@
                 {
                     "pieceId": 0,
                     "baseDialogue": 0
+                },
+                {
+                    "pieceId": 1,
+                    "baseDialogue": 22
                 }
             ],
             "image" : "testChar1.png"
@@ -41,13 +49,21 @@
         },
         {
             "id": 3,
-            "prenom" : "Françoise",
-            "nom" : "LaFrançaise",
-            "infos" : "Tueuse",
+            "prenom" : "Xénon",
+            "nom" : "Marello",
+            "infos" : "On est là",
             "pieces" : [
                 {
                     "pieceId": 0,
-                    "baseDialogue": 0
+                    "baseDialogue": 20
+                },
+                {
+                    "pieceId" : 1,
+                    "baseDialogue" : 20
+                },
+                {
+                    "pieceId" : 1,
+                    "baseDialogue" : 20
                 }
             ],
             "image" : "testChar3.png"

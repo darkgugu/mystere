@@ -367,7 +367,14 @@
                     "conditions": {
                         "wonEnigmes" : ["stick"]
                     }
-                }
+                },
+                {
+                    "reponseText" : "Haha ! Je connaît le développeur et il m’à prévenu que cette énigme n'est pas encore prête !",
+                    "dialogueNext": 23,
+                    "conditions": {
+                        "wonEnigmes" : ["stick"]
+                    }
+                },
             ]
         },
         {
@@ -392,6 +399,18 @@
             "reponses": [
                 {
                     "reponseText" : "D'accord",
+                    "dialogueNext": null,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 23,
+            "line": "Bravo tu a bien raison d'ailleurs il à écrit ce que tu lit en ce moment dans le train !”
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Waouh, c'est vraiment dommage que ça soit inachevé, mais ça reste un cadeau incroyable",
                     "dialogueNext": null,
                     "conditions": null
                 }

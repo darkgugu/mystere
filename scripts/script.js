@@ -3,7 +3,7 @@ import dialoguesJSON from '../datas/dialogues.json' assert { type: 'json' };
 import piecesJSON from '../datas/pieces.json' assert { type: 'json' };
 import itemsJSON from '../datas/items.json' assert { type : 'json'};
 import {main as mastermindMain, isWon as mastermindWin} from './mastermind.js'
-import {affichage as sticksMain, isWon as sticksWin} from './mastermind.js'
+import {affichage as sticksMain, isWon as sticksWin} from './sticks.js'
 //console.log(charachterJSON)
 //console.log(dialoguesJSON)
 

@@ -11,7 +11,7 @@
                     "baseDialogue": 4
                 }
             ],
-            "image" : "testChar1.png"
+            "image" : "testChar0.png"
         },
         {
             "id": 1,
@@ -24,7 +24,7 @@
                     "baseDialogue": 0
                 }
             ],
-            "image" : "testChar2.png"
+            "image" : "testChar1.png"
         },
         {
             "id": 2,
@@ -37,23 +37,20 @@
                     "baseDialogue": 8
                 }
             ],
-            "image" : "testChar3.png"
-        }
-    ],
-    "pieces" : [
-        {
-            "id" : 0,
-            "nom" : "Salon de test",
-            "personnages" : [
-                0, 1, 2
-            ]
+            "image" : "testChar2.png"
         },
         {
-            "id" : 1,
-            "nom" : "Cuisine de test",
-            "personnages" : [
-                0, 1
-            ]
+            "id": 3,
+            "prenom" : "Françoise",
+            "nom" : "LaFrançaise",
+            "infos" : "Tueuse",
+            "pieces" : [
+                {
+                    "pieceId": 0,
+                    "baseDialogue": 0
+                }
+            ],
+            "image" : "testChar3.png"
         }
     ]
 }

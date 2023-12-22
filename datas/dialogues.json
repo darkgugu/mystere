@@ -88,7 +88,7 @@
                     "dialogueNext": 7,
                     "conditions": null,
                     "effets" : {
-                        "givenItems" : [0, 1, 2, 5, 9]
+                        "givenItems" : [0]
                     }
                 }
             ]
@@ -108,7 +108,7 @@
                     "dialogueNext": 7,
                     "conditions": null,
                     "effets" : {
-                        "givenItems" : [0, 1, 2, 5, 9]
+                        "givenItems" : [0]
                     }
                 }
             ]
@@ -144,13 +144,20 @@
             "reponses": [
                 {
                     "reponseText" : "Non",
-                    "dialogueNext": null,
+                    "dialogueNext": 16,
                     "conditions": null
                 },
                 {
                     "reponseText" : "Oui !",
                     "dialogueNext": 9,
                     "conditions": null
+                },
+                {
+                    "reponseText" : "Eh je vous ai battu, vous m'avez promis un indice",
+                    "dialogueNext": 18,
+                    "conditions": {
+                        "wonEnigmes" : ["mastermind"]
+                    }
                 }
             ]
         },
@@ -274,6 +281,65 @@
                     "reponseText" : "FIN DE LA DEMO",
                     "dialogueNext": null,
                     "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 16,
+            "line": "Bon bah si tu me bats au mastermind, je t'offres un indice",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "C'est mort j'ai la flemme",
+                    "dialogueNext": 17,
+                    "conditions": null
+                },
+                {
+                    "reponseText" : "C'est parti !",
+                    "dialogueNext": null,
+                    "conditions": null,
+                    "effets" : {
+                        "currentEnigme" : "mastermind"
+                    }
+                }
+            ]
+        },
+        {
+            "id" : 17,
+            "line": "Bah mange tes ieps on est où là bordel ???",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "...",
+                    "dialogueNext": null,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 18,
+            "line": "Alea jacta vidi vici sed lex !",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "C'est l'indice ?",
+                    "dialogueNext": 19,
+                    "conditions": null
+                }
+            ]
+        },
+        {
+            "id" : 19,
+            "line": "Non c'est du latin. L'indice c'est ça, on à retrouvé l'émeraude, avec de petites taches de sang",
+            "conditions": null,
+            "reponses": [
+                {
+                    "reponseText" : "Mazette ça brille",
+                    "dialogueNext": null,
+                    "conditions": null,
+                    "effets" : {
+                        "givenItems" : [1]
+                    }
                 }
             ]
         }

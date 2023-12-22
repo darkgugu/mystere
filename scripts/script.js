@@ -1,66 +1,75 @@
-import data from '../datas/charachter.json' assert { type: 'json' };
-import dialoguesJSON from '../datas/test.json' assert { type: 'json' };
+import charachterJSON from '../datas/charachter.json' assert { type: 'json' };
+import dialoguesJSON from '../datas/dialogues.json' assert { type: 'json' };
+import piecesJSON from '../datas/pieces.json' assert { type: 'json' };
+import itemsJSON from '../datas/items.json' assert { type : 'json'};
 import {main as mastermindMain, isWon as mastermindWin} from './mastermind.js'
-console.log(data)
-console.log(dialoguesJSON)
+//console.log(charachterJSON)
+//console.log(dialoguesJSON)
 
-const currPiece = 0
-let piece = data.pieces[currPiece]
-const nbPersos = piece.personnages.length
+const currPieceId = 0
+let pieceStart = piecesJSON.pieces[currPieceId]
 
 const ownedItems = []
 const reachedDialogue = []
-let enigmesWon = {
-    "mastermind" : false,
-    "enigme2" : false
+let wonEnigmes = []
+let histo = []
+let currentEnigme = null
+
+const modale = document.getElementById('modale')
+const modaleTitle = document.getElementById('modale-title')
+const modaleBody = document.getElementById('modale-body')
+
+generatePiece(pieceStart)
+
+function generatePiece(piece) {
+
+	const mainContainer = document.getElementById('background')
+	mainContainer.innerText = ''
+	closeModale()
+
+    const divTitle = document.createElement('div')
+    divTitle.setAttribute('id', 'title')
+    const buttonMove = document.createElement('button')
+    buttonMove.setAttribute('id', 'deplacement')
+    buttonMove.innerText = 'Déplacement'
+	buttonMove.addEventListener('click', () => {openModale('Déplacement', null, piece)})
+    const titleP = document.createElement('p')
+    titleP.innerText = piece.nom
+    const emptyDiv = document.createElement('div')
+
+    divTitle.appendChild(buttonMove)
+    divTitle.appendChild(titleP)
+    divTitle.appendChild(emptyDiv)
+
+    const divPersos = document.createElement('div')
+    divPersos.setAttribute('id', 'persos')
+    for (let i = 0; i < piece.personnages.length; i++) {
+        const currChar = charachterJSON.personnages[piece.personnages[i]]
+
+        const persoContainer = document.createElement('div')
+        persoContainer.setAttribute('id', 'persos-' + i)
+        persoContainer.classList.add('persos-apercu')
+        persoContainer.addEventListener('click', () => openModale('Personnages', currChar))
+        const persoImage = document.createElement('img')
+        persoImage.setAttribute('src', `./assets/images/persos/${currChar.image}`)
+        const persoName = document.createElement('div')
+        persoName.innerText = `${currChar.prenom} ${currChar.nom}`
+        persoContainer.appendChild(persoImage)
+        persoContainer.appendChild(persoName)
+        divPersos.appendChild(persoContainer)
+    }
+
+    const divControls = document.createElement('div')
+    divControls.setAttribute('id', 'controls')
+
+    setControlButtons('Items', divControls)
+    setControlButtons('Enigme', divControls)
+    setControlButtons('Historique de dialogues', divControls)
+
+    mainContainer.appendChild(divTitle)
+    mainContainer.appendChild(divPersos)
+    mainContainer.appendChild(divControls)
 }
-let histo = [
-
-]
-
-const divTitle = document.createElement('div')
-divTitle.setAttribute('id', 'title')
-const buttonMove = document.createElement('button')
-buttonMove.setAttribute('id', 'deplacement')
-buttonMove.innerText = 'Déplacement'
-const titleP = document.createElement('p')
-titleP.innerText = "Nom de la pièce"
-const emptyDiv = document.createElement('div')
-
-divTitle.appendChild(buttonMove)
-divTitle.appendChild(titleP)
-divTitle.appendChild(emptyDiv)
-
-const divPersos = document.createElement('div')
-divPersos.setAttribute('id', 'persos')
-for (let i = 0; i < nbPersos; i++) {
-    const currChar = data.personnages[piece.personnages[i]]
-
-    const persoContainer = document.createElement('div')
-    persoContainer.setAttribute('id', 'persos-' + i)
-    persoContainer.classList.add('persos-apercu')
-    persoContainer.addEventListener('click', () => openModale('Personnages', currChar))
-    const persoImage = document.createElement('img')
-    persoImage.setAttribute('src', `./assets/images/${currChar.image}`)
-    const persoName = document.createElement('div')
-    persoName.innerText = `${currChar.prenom} ${currChar.nom}`
-    persoContainer.appendChild(persoImage)
-    persoContainer.appendChild(persoName)
-    divPersos.appendChild(persoContainer)
-}
-
-const divControls = document.createElement('div')
-divControls.setAttribute('id', 'controls')
-
-setControlButtons('Items', divControls)
-setControlButtons('Enigme', divControls)
-setControlButtons('Historique de dialogues', divControls)
-
-const mainContainer = document.getElementById('background')
-mainContainer.appendChild(divTitle)
-mainContainer.appendChild(divPersos)
-mainContainer.appendChild(divControls)
-
 
 function setControlButtons(buttonName, destination) {
     const button = document.createElement('button')
@@ -75,16 +84,11 @@ buttonClose.addEventListener('click', () => {closeModale()})
 
 function closeModale() {
     modale.close()
-    mastermindWin ? enigmesWon.mastermind = true : null
-    console.log(enigmesWon)
+    mastermindWin ? wonEnigmes.push('mastermind') : null
+    //console.log(wonEnigmes)
 }
 
-const modale = document.getElementById('modale')
-const modaleTitle = document.getElementById('modale-title')
-const modaleBody = document.getElementById('modale-body')
-
-
-function openModale(type, data) {
+function openModale(type, charachter, piece) {
 
     modaleTitle.innerText = type
     modaleBody.innerText = ''
@@ -103,8 +107,12 @@ function openModale(type, data) {
         break;
 
         case 'Personnages':
-            const currChar = data
-            modalePerso(currChar, currChar.pieces[currPiece].baseDialogue)
+            const currChar = charachter
+            modalePerso(currChar, currChar.pieces[currPieceId].baseDialogue)
+        break;
+
+		case 'Déplacement':
+            modaleMove(piece)
         break;
 
         default:
@@ -113,11 +121,51 @@ function openModale(type, data) {
     modale.showModal()
 }
 
+function modaleMove(piece) {
+
+	const piecesContainer = document.createElement('div')
+	const piecesNextArray = piece.piecesNext
+
+	for (let i = 0; i < piecesNextArray.length; i++) {
+	
+		const card = document.createElement('div')
+		card.addEventListener('click', () => {generatePiece(piecesJSON.pieces[piecesNextArray[i]])})
+		const image = document.createElement('img')
+		const title = document.createElement('p')
+		title.innerText = piecesJSON.pieces[piecesNextArray[i]].nom
+
+		card.appendChild(image)
+		card.appendChild(title)
+
+        card.classList.add('cards')
+        card.classList.add('move-cards')
+        modaleBody.appendChild(card)
+	}
+}
+
 function modaleItem() {
-    const nbItems = 8
+    const nbItems = ownedItems.length
     for (let i = 0; i < nbItems; i++) {
+
         const card = document.createElement('div')
+        card.classList.add('cards')
         card.classList.add('item-cards')
+		const image = document.createElement('img')
+        image.setAttribute('src', `./assets/images/items/${itemsJSON.items[ownedItems[i]].image}`)
+
+		const title = document.createElement('p')
+        title.classList.add('item-title')
+		title.innerText = itemsJSON.items[ownedItems[i]].nom
+
+        const desc = document.createElement('p')
+        desc.classList.add('item-desc')
+		desc.innerText = itemsJSON.items[ownedItems[i]].description
+
+		card.appendChild(image)
+		card.appendChild(title)
+        card.appendChild(desc)
+
+        //card.classList.add('move-cards')
         modaleBody.appendChild(card)
     }
 }
@@ -125,9 +173,22 @@ function modaleItem() {
 function modaleEnigme() {
     
     const enigmeContainer = document.createElement('div')
-    enigmeContainer.setAttribute('id', 'mastermind')
-    modaleBody.appendChild(enigmeContainer)
-    mastermindMain()
+
+    if (currentEnigme === 'mastermind') {
+        enigmeContainer.setAttribute('id', 'mastermind')
+        modaleBody.appendChild(enigmeContainer)
+        mastermindMain()        
+    }
+    else if (currentEnigme === 'stick') {
+        enigmeContainer.setAttribute('id', 'stick')
+        modaleBody.appendChild(enigmeContainer)
+    }
+    else{
+        enigmeContainer.innerText = 'Pas d\'énigmes disponible, avancez dans l\'histoire'
+        modaleBody.appendChild(enigmeContainer)
+    }
+
+
 }
 
 function modaleHistorique() {
@@ -166,7 +227,7 @@ function modalePerso(perso, dialogue) {
     const persoRecap = document.createElement('div')
     persoRecap.setAttribute('id', 'perso-recap')
     const imageRecap = document.createElement('img')
-    imageRecap.setAttribute('src', `./assets/images/${perso.image}`)
+    imageRecap.setAttribute('src', `./assets/images/persos/${perso.image}`)
     const textRecap = document.createElement('div')
     const pName = document.createElement('p')
     const pInfos = document.createElement('p')
@@ -217,11 +278,16 @@ function handleReponse(currChar, nextDialogue, effets, text, currDialogue) {
     histo.push(histoObj)
 
     if (effets != null) {
-        console.log(effets.givenItems)
-        for (let i = 0; i < effets.givenItems.length; i++) {
-            getItem(effets.givenItems[i])
+
+        if (effets.givenItems != null) {
+            for (let i = 0; i < effets.givenItems.length; i++) {
+                getItem(effets.givenItems[i])
+            }
         }
-        console.log('ownedItems :', ownedItems);
+
+        if (effets.currentEnigme != null) {
+            currentEnigme = effets.currentEnigme
+        }
     }
 
     if (nextDialogue === null) {
@@ -237,37 +303,35 @@ function isConditionOk(conditions) {
     
     if (conditions === null) {
         return true
-    } else if (conditions.reachedDialogue != null && conditions.ownedItems != null){
-        for (let i = 0; i < conditions.reachedDialogue.length; i++) {
-            if (!reachedDialogue.includes(conditions.reachedDialogue[i])) {
-                return false
-            }
-        }
-        for (let i = 0; i < conditions.ownedItems.length; i++) {
-            if (!ownedItems.includes(conditions.ownedItems[i])) {
-                return false
-            }
-        }
-        return true
+    } 
+    else if (conditions.reachedDialogue != null && conditions.ownedItems != null){
+
+        return checkConditions(reachedDialogue, conditions.reachedDialogue) && checkConditions(ownedItems, conditions.ownedItems)
     }
     else if (conditions.reachedDialogue != null){
-        for (let i = 0; i < conditions.reachedDialogue.length; i++) {
-            if (!reachedDialogue.includes(conditions.reachedDialogue[i])) {
-                return false
-            }
-        }
-        return true
-    } else if (conditions.ownedItems != null){
-        for (let i = 0; i < conditions.ownedItems.length; i++) {
-            if (!ownedItems.includes(conditions.ownedItems[i])) {
-                return false
-            }
-        }
-        return true
+
+        return checkConditions(reachedDialogue, conditions.reachedDialogue)
+    } 
+    else if (conditions.ownedItems != null){
+
+        return checkConditions(ownedItems, conditions.ownedItems)
     }
+    else if (conditions.wonEnigmes != null)  {
+        return checkConditions(wonEnigmes, conditions.wonEnigmes)
+    }
+}
+
+function checkConditions(array, data) {
+    for (let i = 0; i < data.length; i++) {
+        if (!array.includes(data[i])) {
+            return false
+        }
+    }
+    return true
 }
 
 function getItem(itemId){
 
     ownedItems.push(itemId)
 }
+

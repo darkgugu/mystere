@@ -1,0 +1,28 @@
+{
+    "items" : [
+        {
+            "id" : 0,
+            "nom" : "Pantalon taché de sang",
+            "description" : "Ce pantalon est taché de sang au niveau de la ceinture",
+            "image" : "pantalon.png"
+        },
+        {
+            "id" : 1,
+            "nom" : "Enorme émeraude",
+            "description" : "L'émeraude volée",
+            "image" : "emerald.png"
+        },
+        {
+            "id" : 2,
+            "nom" : "Revolver",
+            "description" : "Pistolet de la marque Pioupiou & Associates, deux balles ont été tirées",
+            "image" : "revolver.png"
+        },
+        {
+            "id" : 3,
+            "nom" : "Paquet de chips",
+            "description" : "Mmhh. Miam. Cronch cronch.",
+            "image" : "chips.png"
+        }
+    ]
+}
